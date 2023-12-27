@@ -1,0 +1,17 @@
+# Ignore compilation objects
+*.pyc
+*.mod
+docs/_build
+
+env
+dist
+build
+MANIFEST
+*.egg-info
+.coverage
+.tox
+
+# Simulations
+rumd_timing_info.dat
+log.lammps
+.DS_Store
