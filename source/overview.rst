@@ -5,9 +5,9 @@ Overview
 
 Welcome to the tutorial on how to create technical documentation.
 
-In this tutorial you will learn how to ...
+In this tutorial you will learn how to write and manage documentation for your code.
 
-To start, you'll just need to have a text editor and basic knowledge of shell.
+To start, you'll just need to have a text editor and basic knowledge of shell commands.
 
 In order to generate your own documentation, those are the tools that you will need:
 
@@ -18,8 +18,8 @@ In order to generate your own documentation, those are the tools that you will n
 
 To make your experience more fluent and personal, you may also like to have a look on:
 
-* **Org-mode**, a major mode for *GNU Emacs* text editor, a markup language and much more;
-* how to change and customize **themes** in your webpage.
+*	**Org-mode**, a major mode for *GNU Emacs* text editor, a markup language and much more;
+*	how to change and customize **themes** in your webpage.
 
 
 
