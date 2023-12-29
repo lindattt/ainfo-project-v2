@@ -1,3 +1,5 @@
+.. _markup:
+
 =====================
 The markup language
 =====================
@@ -66,6 +68,26 @@ Links
    `anchor text <URL>`__
    
    For example, this `link <https://github.com/>`__ redirects to GitHub.
+   
+
+Crossreferences 
+~~~~~~~~~~~~~~~~
+
+To put a tag on a header or a page:
+
+.. code-block:: rest
+
+   .. _my-header-tag: 
+   
+   Header
+   ======
+   
+Then to call it in another page:
+
+.. code-block:: rest
+
+   Click :ref:`here <my-header-tag>` to be redirected to a specific section.
+
 
 
 Code blocks
@@ -79,4 +101,14 @@ Code blocks
 
 Inline
 
-Trying this :ref:`cross reference thing <what is a markup language>`
+
+Toctree (Sphinx)
+~~~~~~~~~~~~~~~~
+
+To hide the toctree:
+
+.. code-block:: rest
+    .. toctree::
+       :hidden:
+
+
