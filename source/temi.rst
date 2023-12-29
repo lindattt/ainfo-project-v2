@@ -11,6 +11,9 @@ Themes are meant to be project-unaware, so they can be used for different projec
 There are plenty of free themes that you can choose. Here you can find some examples: https://sphinx-themes.org
 
 
+HANDS ON: Change your theme
+---------------------------------------
+
 How to change the theme of your project?
 It is simple. You need to install the theme 
 

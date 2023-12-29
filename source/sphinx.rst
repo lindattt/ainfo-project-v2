@@ -16,6 +16,11 @@ Sphinx
 The documentation compiler that we are going to use in this tutorial is **Sphinx**.
 
 
+HANDS ON: build your first page of documentation
+----------------------------------------------------------------------
+
+
+
 
 The document ``conf.py``
 -------------------------

@@ -99,7 +99,32 @@ Code blocks
    
       echo "Hello world"
 
+
 Inline
+~~~~~~
+
+To emphasize a certain word like ``this``:
+
+.. code-block:: rest
+
+   ``this``
+
+
+
+Notes, admonitions
+~~~~~~~~~~~~~~~~~~~~
+
+Output:
+
+.. note::
+   A box with a note
+   
+Source code:
+
+.. code-block:: rest
+
+   .. note::
+      A box with a note
 
 
 Toctree (Sphinx)
@@ -112,3 +137,5 @@ To hide the toctree:
        :hidden:
 
 
+HANDS ON: use reST syntax to customize your pages
+----------------------------------------------------------------------

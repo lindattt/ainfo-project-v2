@@ -18,8 +18,8 @@ In order to generate your own documentation, those are the **tools** that you wi
 
 To make your experience more fluent and personal, you may also like to have a look on:
 
-*	:ref:`**Org-mode** <orgmode>`, a major mode for *GNU Emacs* text editor, a markup language and much more;
-*	how to change and customize :ref:`**themes** <temi>` in your webpage.
+*	:ref:`Org-mode <orgmode>`, a major mode for *GNU Emacs* text editor, a markup language and much more;
+*	how to change and customize :ref:`themes <temi>` in your webpage.
 
 
 
