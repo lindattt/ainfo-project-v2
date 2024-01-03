@@ -133,6 +133,7 @@ Toctree (Sphinx)
 To hide the toctree:
 
 .. code-block:: rest
+
     .. toctree::
        :hidden:
 
