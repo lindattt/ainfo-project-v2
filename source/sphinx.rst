@@ -7,19 +7,125 @@ The documentation compiler
 What is a documentation compiler
 --------------------------------
 
-A documentation compiler is...
+A **documentation compiler** is a compiler that converts plain text files (written in Markdown, reStructured Text or other markup languages) into interactive documentation, for example in the form of HTML, LaTeX, ePub and other formats.
 
 
 Sphinx
 ------
 
-The documentation compiler that we are going to use in this tutorial is **Sphinx**.
+The documentation compiler that we are going to use in this tutorial is `Sphinx <https://www.sphinx-doc.org>`__.
+
+If you followed the steps described in :ref:`this section <esercizio1>`, you don't need to install Sphinx again: the **virtual environment** is already equipped with a Sphinx installation.
 
 
-HANDS ON: build your first page of documentation
-----------------------------------------------------------------------
+Exercise: build your first page of documentation
+-------------------------------------------------
+
+In this section we will learn how to build documentation using Sphinx.
+
+*	**Step 1**: Activate the virtual environment
+
+The virtual environment included in the repository you've copied will provide you a Python installation and a recent version of Sphinx.
+
+To activate the virtual environment, run the following command:
+
+.. code-block:: bash
+
+	conda activate coderefinery
+	
+
+*	**Step 2**: Use sphinx-quickstart
+
+We can easily generate the basic documentation template with a built-in command in Sphinx. Run:
+
+.. code-block:: bash
+
+	sphinx-quickstart
+
+The quickstart utility will ask you some questions. You can choose to go with the default answers or to specify names, preferences and details for your project. For example:
+
+.. code-block:: bash
+
+	> Separate source and build directories (y/n) [n]: <type y>
+	> Project name: <your project name>
+	> Author name(s): <your name>
+	> Project release []: <hit enter>
+	> Project language [en]: <hit enter>
+
+After that, some files and some directories will be created.
 
 
+Directories:
+
+*	**source**: contains plain-text files of documentation.
+*	**build**: contains output files	
+
+
+Files:
+	 
+*	**index.rst**: main file for Sphinx. It contains the index of all pages of the documentation and represents the homepage of the documentation once the project is converted in an interactive output format (like HTML).
+*	**conf.py**: configuration file for Sphinx. It contains metadata and information regarding extensions, themes, etc.
+
+
+We will now take a closer look on those two files
+
+
+The document ``index.rst``
+--------------------------
+
+The document ``index.rst`` contains the table of contents (*toctree*) of the documentation.
+
+Using the quickstart utility, your index file will look like this:
+
+.. code-block:: rest
+
+	.. myproject documentation master file, created by
+	   sphinx-quickstart on Sat Dec 23 17:35:26 2023.
+	   You can adapt this file completely to your liking, but it should at least
+	   contain the root `toctree` directive.
+
+	Welcome to myproject's documentation!
+	=====================================
+
+	.. toctree::
+	   :maxdepth: 2
+	   :caption: Contents:
+
+
+	Indices and tables
+	==================
+
+	* :ref:`genindex`
+	* :ref:`modindex`
+	* :ref:`search`
+
+
+We can delete the ``Indices and tables`` section since we won't use it in this tutorial. To add content to our documentation, we must create plain-text files in the ``source`` directory and then add them to the ``toctree``. For example, we create two reStructured Text files, ``page1.rst`` and ``page2.rst``, and then list these files (without specifying extension, in case of .rst files) under the ``toctree``.
+
+.. code-block:: rest
+
+	.. myproject documentation master file, created by
+	   sphinx-quickstart on Sat Dec 23 17:35:26 2023.
+	   You can adapt this file completely to your liking, but it should at least
+	   contain the root `toctree` directive.
+
+	Welcome to myproject's documentation!
+	=====================================
+
+	.. toctree::
+	   :maxdepth: 2
+	   :caption: Contents:
+
+	   page1
+	   page2
+
+
+.. attention::
+	
+	Pay attention to the indentation of the file names under the toctree. The file names must be indented correctly in order to be interpreted as the content of the toctree. 
+	
+
+You can now edit the documents you've created and format them with reStructured Text markup language and add more content to the toctree.
 
 
 The document ``conf.py``
@@ -27,7 +133,7 @@ The document ``conf.py``
 
 The document ``conf.py`` contains Python instructions for the Sphinx builder. 
 
-The information contained in this document ranges from...
+The information contained in this document covers project information, metadata, sphinx extensions, themes and so on.
 
 .. code-block:: python
 

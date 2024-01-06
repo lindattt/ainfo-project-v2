@@ -7,15 +7,16 @@ The version control platform
 What is a version control platform?
 -----------------------------------
 
-Version control platforms are platforms that allow you to keep track of the changes done to your code over time, and to resume an older version of it if needed.
+**Version control platforms** are platforms that allow you to keep track of the changes done to your code over time, and to resume an older version of it if needed.
 
-In order to manage properly a new project, it is useful to create a repository in a version control platform. 
+In order to manage properly a new project, it is useful to create a **repository** in a version control platform. 
 
 GitHub and GitLab
 -----------------
 
-The most popular platforms of this kind are `GitHub <https://github.com>`__ and `GitLab <https://gitlab.com>`__. Those platforms are different but they share similar features, so no matter which one you choose to work with, the content of the GitHub repository and of the GitLab repository will basically be the same, as well as the shell commands you need to know to work from locally from your computer.
+The **most popular platforms** of this kind are `GitHub <https://github.com>`__ and `GitLab <https://gitlab.com>`__. Although those are two different and independent platforms, they share the same functioning principles: no matter which one you choose to work with, the content of the GitHub repository and of the GitLab repository will be the same, as well as the shell commands you need to know to work from locally from your computer.
 
+.. _esercizio1:
 
 Exercise: create a repository for your technical documentation project
 ----------------------------------------------------------------------
@@ -25,15 +26,19 @@ Exercise: create a repository for your technical documentation project
    
 For the sake of brevity, in the following examples we will work with GitHub, but the same commands and instructions apply to GitLab.
 
-*   Create an account on `GitHub <https://github.com>`__. 
+*   **Step 1**: Create an account on `GitHub <https://github.com>`__. 
 
-If you choose for example ``myuser`` as a username, your personal account will be created at this link: ``https://github.com/myuser``.
+If you choose for example ``myuser`` as a username, your personal account will be available at this link: ``https://github.com/myuser``.
 
 .. *la configurazione la salto, perché viene dal prerequisito di avere installato Git sull'OS
 
-*   Open the shell in the directory you want to work on. Let it be, for example, your home directory ``~/``.
+*   **Step 2**: Open the shell in the directory you want to work on. 
+
+Let it be, for example, your home directory ``~/``.
    
-*   Create a new repository on GitHub. Let's use the command line interface (CLI):
+*   **Step 3**: Create a new repository on GitHub. 
+
+Let's use the command line interface (CLI):
 
 .. code-block:: bash
 
@@ -70,15 +75,15 @@ You can choose the default options by pressing the enter key and the output will
 	
 If you answer yes to the last question, the repository will be copied locally, and its path will be ``~/myrep``. 
 
-*	Clone `this repository <https://framagit.org/coslo/template-docs>`__.
+*	**Step 4**: Clone `this repository <https://framagit.org/coslo/template-docs>`__.
 
 .. code-block:: bash
 	
 	git clone https://framagit.org/coslo/template-docs
 
-This repository contains the basics to put up a virtual environment with python and sphinx installed.
+This repository contains the basics to put up a virtual environment with Python and Sphinx installed.
 	
-*	Push the cloned content in your repository.
+*	**Step 5**: Push the cloned content in your repository.
 
 .. code-block:: bash
 	

@@ -10,27 +10,26 @@ The markup language
 What is a markup language
 --------------------------
 
-A markup language is...
+A **markup language** is a language whose syntax allows to format text and organize the layout of a digital document.
 
-Sono linguaggi leggeri (rispetto ad HTML)
+A file written in a markup language is then **processed** by a compiler (like :ref:`Sphinx <sphinx>`) and **rendered** in the desired output (HTML, LaTeX, and so on).
 
-Possono venire tradotti in html
+There are many markup languages; some of these are characterixed by a "light" syntax, i.e. a syntax that can be easily interpreted by a human user. Among these lightweight languages, two famous choices are **Markdown** and **reStructured Text**, which by the way share a lot of common syntax.
 
-Sphinx li traduce automaticamente, nella compilazione... sì, perché mica mi obblica a scrivere in rest...
-
-
+For simplicity, in this tutorial we will work with reStructured Text only.
 
 reStructured Text
 ------------------
 
-reStructured Text is a simple and straightforward markup language.
+**reStructured Text (reST)** is a simple and straightforward markup language.
 
 The following is a short list of formattating commands for your text in reStructured Text.
 
-Elementi di formattazione (gli stessi che ho usato io)
 
 Headings
 ~~~~~~~~
+
+Title and headings are formatted as follows:
 
 .. code-block:: rest
 
@@ -52,20 +51,30 @@ Headings
 	
 	
 
-Bolds, italics, ...
-~~~~~~~~~~~~~~~~~~~
+Bold, italics
+~~~~~~~~~~~~~
+
+**How it looks:**
+
+	**bold text**, *italics text*
+
+**Source:**
 
 .. code-block:: rest
 
-	**bold text**, *italics text*, ...
+	**bold text**, *italics text*
 
 
 Links
 ~~~~~
 
-.. code-block:: rest
+**How it looks:**
 
-   `anchor text <URL>`__
+   For example, this `link <https://github.com/>`__ redirects to GitHub.
+
+**Source:**
+
+.. code-block:: rest
    
    For example, this `link <https://github.com/>`__ redirects to GitHub.
    
@@ -73,7 +82,7 @@ Links
 Crossreferences 
 ~~~~~~~~~~~~~~~~
 
-To put a tag on a header or a page:
+To put a tag on a header or title of a page:
 
 .. code-block:: rest
 
@@ -92,6 +101,14 @@ Then to call it in another page:
 
 Code blocks
 ~~~~~~~~~~~
+
+**How it looks:**
+
+   .. code-block::
+   
+      echo "Hello world"
+
+**Source:**
 
 .. code-block:: rest
 
@@ -112,14 +129,14 @@ To emphasize a certain word like ``this``:
 
 
 Notes, admonitions
-~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~
 
-Output:
+**How it looks:**
 
 .. note::
    A box with a note
    
-Source code:
+**Source:**
 
 .. code-block:: rest
 
@@ -127,16 +144,55 @@ Source code:
       A box with a note
 
 
-Toctree (Sphinx)
-~~~~~~~~~~~~~~~~
-
-To hide the toctree:
-
-.. code-block:: rest
-
-    .. toctree::
+.. Toctree (Sphinx)
+	~~~~~~~~~~~~~~~~
+	To hide the toctree:
+	.. code-block:: rest
+	 .. toctree::
        :hidden:
 
 
-HANDS ON: use reST syntax to customize your pages
-----------------------------------------------------------------------
+Tables
+~~~~~~
+
+**How it looks:**
+
+.. list-table:: Title
+   :widths: 25 25 50
+   :header-rows: 1
+
+   * - Heading row 1, column 1
+     - Heading row 1, column 2
+     - Heading row 1, column 3
+   * - Row 1, column 1
+     -
+     - Row 1, column 3
+   * - Row 2, column 1
+     - Row 2, column 2
+     - Row 2, column 3
+
+
+**Source:**
+
+.. code-block:: rest
+
+	.. list-table:: Title
+   		:widths: 25 25 50
+   	 	:header-rows: 1
+
+   	 	* - Heading row 1, column 1
+   	  	  - Heading row 1, column 2
+     	  - Heading row 1, column 3
+   	    * - Row 1, column 1
+ 		  -
+		  - Row 1, column 3
+ 		* - Row 2, column 1
+  	      - Row 2, column 2
+  		  - Row 2, column 3
+
+
+
+Exercise: use reST syntax to format your pages
+----------------------------------------------
+
+Try to use the syntax rules shown above to format your documentation.
