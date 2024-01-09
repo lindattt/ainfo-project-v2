@@ -25,14 +25,10 @@ In this section we will learn how to build documentation using Sphinx.
 
 *	**Step 1**: Activate the virtual environment
 
-The virtual environment included in the repository you've copied will provide you a Python installation and a recent version of Sphinx.
+The virtual environment included in the repository you've copied will provide you the latest version of Sphinx.
 
-To activate the virtual environment, run the following command:
+To set up the virtual environment and get Sphinx installed, run the commands in the ``README.md`` file ( **INSERIRE LINK** ).
 
-.. code-block:: bash
-
-	conda activate coderefinery
-	
 
 *	**Step 2**: Use sphinx-quickstart
 

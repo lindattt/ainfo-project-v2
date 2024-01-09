@@ -17,8 +17,8 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'Abilità Informatiche'
-html_title = 'Basics of technical documentation writing'
+project = 'Basics of technical documentation'
+html_title = 'Basics of technical documentation'
 copyright = '2023, Linda Tamaro'
 author = 'Linda Tamaro'
 
