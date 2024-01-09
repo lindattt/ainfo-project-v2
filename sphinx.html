@@ -1,0 +1,626 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="./">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="The markup language" href="markup.html" /><link rel="prev" title="The version control platform" href="git.html" />
+
+    <!-- Generated with Sphinx 7.2.6 and Furo 2023.09.10 -->
+        <title>The documentation compiler - Basics of technical documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=135e06be" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=36a5483c" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=f5fd031e" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  --admonition-title-font-size: 1rem;
+  --admonition-font-size: 1rem;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="index.html"><div class="brand">Basics of technical documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
+  
+  
+  <span class="sidebar-brand-text">Basics of technical documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="git.html">The version control platform</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">The documentation compiler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="markup.html">The markup language</a></li>
+<li class="toctree-l1"><a class="reference internal" href="host.html">The hosting service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="orgmode.html">Org-mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="temi.html">Themes</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <section id="the-documentation-compiler">
+<span id="sphinx"></span><h1>The documentation compiler<a class="headerlink" href="#the-documentation-compiler" title="Link to this heading">#</a></h1>
+<section id="what-is-a-documentation-compiler">
+<h2>What is a documentation compiler<a class="headerlink" href="#what-is-a-documentation-compiler" title="Link to this heading">#</a></h2>
+<p>A <strong>documentation compiler</strong> is a compiler that converts plain text files, written for example reStructured Text or other markup languages, into interactive documentation, for example in the form of HTML, LaTeX, ePub and other formats.</p>
+</section>
+<section id="id1">
+<h2>Sphinx<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<p>The documentation compiler that we are going to use in this tutorial is <a class="reference external" href="https://www.sphinx-doc.org">Sphinx</a>.</p>
+<p>If you followed the steps described in <a class="reference internal" href="git.html#esercizio1"><span class="std std-ref">this section</span></a>, you don’t need to install Sphinx again: the <strong>virtual environment</strong> is already equipped with a Sphinx installation.</p>
+</section>
+<section id="exercise-build-your-first-page-of-documentation">
+<h2>Exercise: build your first page of documentation<a class="headerlink" href="#exercise-build-your-first-page-of-documentation" title="Link to this heading">#</a></h2>
+<p>In this section we will learn how to build documentation using Sphinx.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You need to have <a class="reference external" href="https://www.python.org/downloads/">Python</a> and <a class="reference external" href="https://pypi.org/project/pip/">pip</a> installed in your operating system.</p>
+</div>
+<ul class="simple">
+<li><p><strong>Step 1</strong>: Activate the virtual environment.</p></li>
+</ul>
+<p>The virtual environment included in the repository you’ve copied will provide you the latest version of Sphinx.</p>
+<p>To set up the virtual environment and get Sphinx installed, run the commands in the <a class="reference external" href="https://github.com/lindattt/template-sphinx/blob/main/README.md">README.md</a> file:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>env
+.<span class="w"> </span>env/bin/activate
+pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Step 2</strong>: Use sphinx-quickstart.</p></li>
+</ul>
+<p>We can easily generate the basic documentation template with a built-in command in Sphinx. Run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sphinx-quickstart
+</pre></div>
+</div>
+<p>The quickstart utility will ask you some questions. You can choose to go with the default answers or to specify names, preferences and details for your project. For example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt;<span class="w"> </span>Separate<span class="w"> </span><span class="nb">source</span><span class="w"> </span>and<span class="w"> </span>build<span class="w"> </span>directories<span class="w"> </span><span class="o">(</span>y/n<span class="o">)</span><span class="w"> </span><span class="o">[</span>n<span class="o">]</span>:<span class="w"> </span>&lt;<span class="nb">type</span><span class="w"> </span>y&gt;
+&gt;<span class="w"> </span>Project<span class="w"> </span>name:<span class="w"> </span>&lt;your<span class="w"> </span>project<span class="w"> </span>name&gt;
+&gt;<span class="w"> </span>Author<span class="w"> </span>name<span class="o">(</span>s<span class="o">)</span>:<span class="w"> </span>&lt;your<span class="w"> </span>name&gt;
+&gt;<span class="w"> </span>Project<span class="w"> </span>release<span class="w"> </span><span class="o">[]</span>:<span class="w"> </span>&lt;hit<span class="w"> </span>enter&gt;
+&gt;<span class="w"> </span>Project<span class="w"> </span>language<span class="w"> </span><span class="o">[</span>en<span class="o">]</span>:<span class="w"> </span>&lt;hit<span class="w"> </span>enter&gt;
+</pre></div>
+</div>
+<p>After that, some files and some directories will be created.</p>
+<p>Directories:</p>
+<ul class="simple">
+<li><p><strong>source</strong>: contains plain-text files of documentation.</p></li>
+<li><p><strong>build</strong>: contains output files</p></li>
+</ul>
+<p>Files:</p>
+<ul class="simple">
+<li><p><strong>index.rst</strong>: main file for Sphinx. It contains the index of all pages of the documentation and represents the homepage of the documentation once the project is converted in an interactive output format (like HTML).</p></li>
+<li><p><strong>conf.py</strong>: configuration file for Sphinx. It contains metadata and information regarding extensions, themes, etc.</p></li>
+</ul>
+<p>We will now take a closer look on those two files.</p>
+</section>
+<section id="the-document-index-rst">
+<h2>The document <code class="docutils literal notranslate"><span class="pre">index.rst</span></code><a class="headerlink" href="#the-document-index-rst" title="Link to this heading">#</a></h2>
+<p>The document <code class="docutils literal notranslate"><span class="pre">index.rst</span></code> contains the table of contents (<em>toctree</em>) of the documentation.</p>
+<p>Using the quickstart utility, your index file will look like this:</p>
+<div class="highlight-rest notranslate"><div class="highlight"><pre><span></span><span class="cp">.. myproject documentation master file, created by</span>
+<span class="cp">   sphinx-quickstart on Sat Dec 23 17:35:26 2023.</span>
+<span class="cp">   You can adapt this file completely to your liking, but it should at least</span>
+<span class="cp">   contain the root `toctree` directive.</span>
+
+<span class="gh">Welcome to myproject&#39;s documentation!</span>
+<span class="gh">=====================================</span>
+
+<span class="p">..</span> <span class="ow">toctree</span><span class="p">::</span>
+   <span class="nc">:maxdepth:</span> 2
+   <span class="nc">:caption:</span> Contents:
+
+
+<span class="gh">Indices and tables</span>
+<span class="gh">==================</span>
+
+<span class="m">*</span> <span class="na">:ref:</span><span class="nv">`genindex`</span>
+<span class="m">*</span> <span class="na">:ref:</span><span class="nv">`modindex`</span>
+<span class="m">*</span> <span class="na">:ref:</span><span class="nv">`search`</span>
+</pre></div>
+</div>
+<p>We can delete the <code class="docutils literal notranslate"><span class="pre">Indices</span> <span class="pre">and</span> <span class="pre">tables</span></code> section since we won’t use it in this tutorial. To add content to our documentation, we must create plain-text files in the <code class="docutils literal notranslate"><span class="pre">source</span></code> directory and then add them to the <code class="docutils literal notranslate"><span class="pre">toctree</span></code>. For example, we create two reStructured Text files, <code class="docutils literal notranslate"><span class="pre">page1.rst</span></code> and <code class="docutils literal notranslate"><span class="pre">page2.rst</span></code>, and then list these files (without specifying extension, in case of .rst files) under the <code class="docutils literal notranslate"><span class="pre">toctree</span></code>.</p>
+<div class="highlight-rest notranslate"><div class="highlight"><pre><span></span><span class="cp">.. myproject documentation master file, created by</span>
+<span class="cp">   sphinx-quickstart on Sat Dec 23 17:35:26 2023.</span>
+<span class="cp">   You can adapt this file completely to your liking, but it should at least</span>
+<span class="cp">   contain the root `toctree` directive.</span>
+
+<span class="gh">Welcome to myproject&#39;s documentation!</span>
+<span class="gh">=====================================</span>
+
+<span class="p">..</span> <span class="ow">toctree</span><span class="p">::</span>
+   <span class="nc">:maxdepth:</span> 2
+   <span class="nc">:caption:</span> Contents:
+
+   page1
+   page2
+</pre></div>
+</div>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>Pay attention to the indentation of the file names under the toctree. The file names must be indented correctly in order to be interpreted as the content of the toctree.</p>
+</div>
+<p>You can now edit the documents you’ve created and format them with reStructured Text markup language and add more content to the toctree.</p>
+</section>
+<section id="the-document-conf-py">
+<h2>The document <code class="docutils literal notranslate"><span class="pre">conf.py</span></code><a class="headerlink" href="#the-document-conf-py" title="Link to this heading">#</a></h2>
+<p>The document <code class="docutils literal notranslate"><span class="pre">conf.py</span></code> contains Python instructions for the Sphinx builder.</p>
+<p>The information contained in this document covers project information, metadata, sphinx extensions, themes and so on.</p>
+<p>If you use the <code class="docutils literal notranslate"><span class="pre">sphinx-quickstart</span></code> utility, your <code class="docutils literal notranslate"><span class="pre">conf.py</span></code> file will look like that:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Configuration file for the Sphinx documentation builder.</span>
+<span class="c1">#</span>
+<span class="c1"># For the full list of built-in configuration values, see the documentation:</span>
+<span class="c1"># https://www.sphinx-doc.org/en/master/usage/configuration.html</span>
+
+<span class="c1"># -- Project information -----------------------------------------------------</span>
+<span class="c1"># https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information</span>
+
+<span class="n">project</span> <span class="o">=</span> <span class="s1">&#39;myproject&#39;</span>
+<span class="n">copyright</span> <span class="o">=</span> <span class="s1">&#39;2023, myname&#39;</span>
+<span class="n">author</span> <span class="o">=</span> <span class="s1">&#39;myname&#39;</span>
+
+<span class="c1"># -- General configuration ---------------------------------------------------</span>
+<span class="c1"># https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration</span>
+
+<span class="n">extensions</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="n">templates_path</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;_templates&#39;</span><span class="p">]</span>
+<span class="n">exclude_patterns</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># -- Options for HTML output -------------------------------------------------</span>
+<span class="c1"># https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output</span>
+
+<span class="n">html_theme</span> <span class="o">=</span> <span class="s1">&#39;alabaster&#39;</span>
+<span class="n">html_static_path</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;_static&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Let’s take a look on a slightly more elaborated <code class="docutils literal notranslate"><span class="pre">conf.py</span></code> document, in order to examine a variety of variables that you can add to manage and customize your documentation.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Configuration file for the Sphinx documentation builder.</span>
+<span class="c1">#</span>
+<span class="c1"># This file only contains a selection of the most common options. For a full</span>
+<span class="c1"># list see the documentation:</span>
+<span class="c1"># https://www.sphinx-doc.org/en/master/usage/configuration.html</span>
+
+<span class="c1"># -- Path setup --------------------------------------------------------------</span>
+
+<span class="c1"># If extensions (or modules to document with autodoc) are in another directory,</span>
+<span class="c1"># add these directories to sys.path here. If the directory is relative to the</span>
+<span class="c1"># documentation root, use os.path.abspath to make it absolute, like shown here.</span>
+<span class="c1">#</span>
+<span class="c1"># import os</span>
+<span class="c1"># import sys</span>
+<span class="c1"># sys.path.insert(0, os.path.abspath(&#39;../&#39;))</span>
+
+
+<span class="c1"># -- Project information -----------------------------------------------------</span>
+
+<span class="n">project</span> <span class="o">=</span> <span class="s1">&#39;Project&#39;</span>
+<span class="n">html_title</span> <span class="o">=</span> <span class="s1">&#39;Project&#39;</span>
+<span class="n">copyright</span> <span class="o">=</span> <span class="s1">&#39;2023, John Doe&#39;</span>
+<span class="n">author</span> <span class="o">=</span> <span class="s1">&#39;John Doe&#39;</span>
+
+
+<span class="c1"># -- General configuration ---------------------------------------------------</span>
+
+<span class="c1"># Add any Sphinx extension module names here, as strings. They can be</span>
+<span class="c1"># extensions coming with Sphinx (named &#39;sphinx.ext.*&#39;) or your custom</span>
+<span class="c1"># ones.</span>
+<span class="c1"># extensions = [&#39;sphinx.ext.autodoc&#39;, &#39;sphinx.ext.coverage&#39;, &#39;sphinx.ext.napoleon&#39;]</span>
+<span class="n">extensions</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># Add any paths that contain templates here, relative to this directory.</span>
+<span class="n">templates_path</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;_templates&#39;</span><span class="p">]</span>
+
+<span class="c1"># The root document.</span>
+<span class="n">root_doc</span> <span class="o">=</span> <span class="s1">&#39;index&#39;</span>
+
+<span class="c1"># Highlights: do not highlight literal blocks</span>
+<span class="n">highlight_language</span> <span class="o">=</span> <span class="s1">&#39;none&#39;</span>
+
+<span class="c1"># List of patterns, relative to source directory, that match files and</span>
+<span class="c1"># directories to ignore when looking for source files.</span>
+<span class="c1"># This pattern also affects html_static_path and html_extra_path.</span>
+<span class="n">exclude_patterns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;_build&#39;</span><span class="p">,</span> <span class="s1">&#39;Thumbs.db&#39;</span><span class="p">,</span> <span class="s1">&#39;.DS_Store&#39;</span><span class="p">]</span>
+
+<span class="c1"># Add any paths that contain custom static files (such as style sheets) here,</span>
+<span class="c1"># relative to this directory. They are copied after the builtin static files,</span>
+<span class="c1"># so a file named &quot;default.css&quot; will overwrite the builtin &quot;default.css&quot;.</span>
+<span class="n">html_static_path</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># The theme to use for HTML and HTML Help pages.  See the documentation for</span>
+<span class="c1"># a list of builtin themes.</span>
+<span class="n">html_theme</span> <span class="o">=</span> <span class="s1">&#39;furo&#39;</span>
+
+<span class="k">if</span> <span class="n">html_theme</span> <span class="o">==</span> <span class="s1">&#39;alabaster&#39;</span><span class="p">:</span>
+    <span class="n">pygments_style</span> <span class="o">=</span> <span class="s1">&#39;friendly&#39;</span>
+    <span class="n">html_static_path</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;_static/custom.css&#39;</span><span class="p">]</span>
+    <span class="n">html_theme_options</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;Code description&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;fixed_sidebar&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="s1">&#39;sidebar_collapse&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="s1">&#39;extra_nav_links&#39;</span><span class="p">:</span> <span class="p">{},</span>
+        <span class="s1">&#39;gray_2&#39;</span><span class="p">:</span> <span class="s1">&#39;#F4F4F4ED&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;sidebar_width&#39;</span><span class="p">:</span> <span class="s1">&#39;250px&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;body_max_width&#39;</span><span class="p">:</span> <span class="s1">&#39;auto&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;page_width&#39;</span><span class="p">:</span> <span class="s1">&#39;1000px&#39;</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="n">html_sidebars</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;**&#39;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s1">&#39;about.html&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;navigation.html&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;searchbox.html&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;relations.html&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;donate.html&#39;</span><span class="p">,</span>
+        <span class="p">]</span>
+    <span class="p">}</span>
+
+<span class="k">if</span> <span class="n">html_theme</span> <span class="o">==</span> <span class="s1">&#39;sphinx_rtd_theme&#39;</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">sphinx_rtd_theme</span>
+    <span class="n">extensions</span> <span class="o">+=</span> <span class="p">[</span>
+        <span class="s1">&#39;sphinx_rtd_theme&#39;</span><span class="p">,</span>
+    <span class="p">]</span>
+    <span class="n">html_theme_options</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;display_version&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="s1">&#39;vcs_pageview_mode&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+        <span class="c1"># Toc options</span>
+        <span class="s1">&#39;collapse_navigation&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="s1">&#39;sticky_navigation&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="s1">&#39;navigation_depth&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+        <span class="s1">&#39;includehidden&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="s1">&#39;titles_only&#39;</span><span class="p">:</span> <span class="kc">False</span>
+    <span class="p">}</span>
+
+<span class="k">if</span> <span class="n">html_theme</span> <span class="o">==</span> <span class="s1">&#39;furo&#39;</span><span class="p">:</span>
+    <span class="n">pygments_style</span> <span class="o">=</span> <span class="s1">&#39;tango&#39;</span>
+    <span class="c1"># html_static_path = [&#39;_static/furo/&#39;]</span>
+    <span class="c1"># html_css_files = [&#39;custom.css&#39;]</span>
+    <span class="n">html_theme_options</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;light_css_variables&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;admonition-title-font-size&quot;</span><span class="p">:</span> <span class="s2">&quot;1rem&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;admonition-font-size&quot;</span><span class="p">:</span> <span class="s2">&quot;1rem&quot;</span><span class="p">,</span>
+        <span class="p">},</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+<p>Information about the variables contained in this document can be found in <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/configuration.html">this page</a>.</p>
+<p>Let’s take a closer look on some specific part of <code class="docutils literal notranslate"><span class="pre">conf.py</span></code>.</p>
+<section id="project-information">
+<h3>Project information<a class="headerlink" href="#project-information" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">project</span> <span class="o">=</span> <span class="s1">&#39;Project&#39;</span>
+<span class="n">html_title</span> <span class="o">=</span> <span class="s1">&#39;Project&#39;</span>
+<span class="n">copyright</span> <span class="o">=</span> <span class="s1">&#39;2023, John Doe&#39;</span>
+<span class="n">author</span> <span class="o">=</span> <span class="s1">&#39;John Doe&#39;</span>
+</pre></div>
+</div>
+<p>In this section we can edit: the name of the project; the title that will appear in each HTML page of the output; the copyright statement; the author name.</p>
+</section>
+<section id="extensions">
+<h3><code class="docutils literal notranslate"><span class="pre">extensions</span></code><a class="headerlink" href="#extensions" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">extensions</span> <span class="o">=</span> <span class="p">[]</span>
+</pre></div>
+</div>
+<p>Extensions can be added to the build process, in order to customize almost any aspect of document processing. Extensions must be added as strings. Examples of built-in extensions provided by Sphinx are <code class="docutils literal notranslate"><span class="pre">sphinx.ext.doctest</span></code>, which tests snippets in the documentation, or <code class="docutils literal notranslate"><span class="pre">sphinx.ext.doctest</span></code>, which enables the creation of to-do lists.</p>
+</section>
+<section id="templates-path">
+<h3><code class="docutils literal notranslate"><span class="pre">templates_path</span></code><a class="headerlink" href="#templates-path" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">templates_path</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;_templates&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Themes and templates are two different things.</p>
+<p>You can overwrite only specific blocks within a template, customizing it while also keeping the changes at a minimum.</p>
+<p>Sphinx will look for templates in the folders of templates_path first, and if it can’t find the template it’s looking for there, it falls back to the selected theme’s templates.</p>
+</section>
+<section id="root-doc">
+<h3><code class="docutils literal notranslate"><span class="pre">root_doc</span></code><a class="headerlink" href="#root-doc" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">root_doc</span> <span class="o">=</span> <span class="s1">&#39;index&#39;</span>
+</pre></div>
+</div>
+<p>The document name of the “root” document, that is, the document that contains the root toctree directive. Default is ‘index’.</p>
+</section>
+<section id="highlight-language">
+<h3><code class="docutils literal notranslate"><span class="pre">highlight_language</span></code><a class="headerlink" href="#highlight-language" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">highlight_language</span> <span class="o">=</span> <span class="s1">&#39;none&#39;</span>
+</pre></div>
+</div>
+<p>This variable refers to the default programming language to highlight source code in. Almost any documentation project contains code blocks to explain chunks of the code; this page itself contains several blocks. It is possible to customize each block so that the text is not single-coloured but highlighted, as it would be in the editor. If no specification is indicated in the block, the highlight will be the one contained in the <code class="docutils literal notranslate"><span class="pre">highlight_language</span></code> variable.
+For example, if we are writing documentation exclusively related to fortran</p>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span><span class="o">+</span><span class="mi">1</span>
+</pre></div>
+</div>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>1+1
+</pre></div>
+</div>
+</section>
+<section id="exclude-patterns">
+<h3><code class="docutils literal notranslate"><span class="pre">exclude_patterns</span></code><a class="headerlink" href="#exclude-patterns" title="Link to this heading">#</a></h3>
+<p>This string contains pattern that are excluded when looking for source files during the building.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">exclude_patterns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;_build&#39;</span><span class="p">,</span> <span class="s1">&#39;Thumbs.db&#39;</span><span class="p">,</span> <span class="s1">&#39;.DS_Store&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<section id="html-static-path">
+<h3><code class="docutils literal notranslate"><span class="pre">html_static_path</span></code><a class="headerlink" href="#html-static-path" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">html_static_path</span> <span class="o">=</span> <span class="p">[]</span>
+</pre></div>
+</div>
+<p>This variable consists of paths that contain custom static files, i.e. CSS files that enable to customize the style of the HTML output. For example, we can create a file <code class="file docutils literal notranslate"><span class="pre">custom.css</span></code> in the <code class="file docutils literal notranslate"><span class="pre">_static</span></code> folder and change the main body font family, from sans-serif (which is default for furo’s theme) to serif:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#conf.py</span>
+
+<span class="n">html_static_path</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;_static&#39;</span><span class="p">]</span>
+
+<span class="n">html_css_files</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;custom.css&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="c">/* custom.css */</span>
+
+<span class="nt">body</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">font-family</span><span class="p">:</span><span class="w"> </span><span class="kc">serif</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="html-theme">
+<h3><code class="docutils literal notranslate"><span class="pre">html_theme</span></code><a class="headerlink" href="#html-theme" title="Link to this heading">#</a></h3>
+<p>This variable allows to change the theme of the HTML output.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">html_theme</span> <span class="o">=</span> <span class="s1">&#39;alabaster&#39;</span>
+</pre></div>
+</div>
+<p><em>Alabaster</em> is the default theme, but there are many others. For example, you can download <em>Furo</em> (see <a class="reference internal" href="temi.html#temi"><span class="std std-ref">here</span></a> how to do it) and change the content of the <code class="docutils literal notranslate"><span class="pre">html_theme</span></code> variable:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">html_theme</span> <span class="o">=</span> <span class="s1">&#39;furo&#39;</span>
+</pre></div>
+</div>
+<p>After the build, your HTML pages will be rendered with the new theme.</p>
+</section>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="markup.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">The markup language</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="git.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">The version control platform</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2023, Linda Tamaro
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">The documentation compiler</a><ul>
+<li><a class="reference internal" href="#what-is-a-documentation-compiler">What is a documentation compiler</a></li>
+<li><a class="reference internal" href="#id1">Sphinx</a></li>
+<li><a class="reference internal" href="#exercise-build-your-first-page-of-documentation">Exercise: build your first page of documentation</a></li>
+<li><a class="reference internal" href="#the-document-index-rst">The document <code class="docutils literal notranslate"><span class="pre">index.rst</span></code></a></li>
+<li><a class="reference internal" href="#the-document-conf-py">The document <code class="docutils literal notranslate"><span class="pre">conf.py</span></code></a><ul>
+<li><a class="reference internal" href="#project-information">Project information</a></li>
+<li><a class="reference internal" href="#extensions"><code class="docutils literal notranslate"><span class="pre">extensions</span></code></a></li>
+<li><a class="reference internal" href="#templates-path"><code class="docutils literal notranslate"><span class="pre">templates_path</span></code></a></li>
+<li><a class="reference internal" href="#root-doc"><code class="docutils literal notranslate"><span class="pre">root_doc</span></code></a></li>
+<li><a class="reference internal" href="#highlight-language"><code class="docutils literal notranslate"><span class="pre">highlight_language</span></code></a></li>
+<li><a class="reference internal" href="#exclude-patterns"><code class="docutils literal notranslate"><span class="pre">exclude_patterns</span></code></a></li>
+<li><a class="reference internal" href="#html-static-path"><code class="docutils literal notranslate"><span class="pre">html_static_path</span></code></a></li>
+<li><a class="reference internal" href="#html-theme"><code class="docutils literal notranslate"><span class="pre">html_theme</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/scripts/furo.js?v=32e29ea5"></script>
+    </body>
+</html>

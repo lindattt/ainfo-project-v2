@@ -1,0 +1,448 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="./">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Org-mode" href="orgmode.html" /><link rel="prev" title="The markup language" href="markup.html" />
+
+    <!-- Generated with Sphinx 7.2.6 and Furo 2023.09.10 -->
+        <title>The hosting service - Basics of technical documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=135e06be" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=36a5483c" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=f5fd031e" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  --admonition-title-font-size: 1rem;
+  --admonition-font-size: 1rem;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="index.html"><div class="brand">Basics of technical documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
+  
+  
+  <span class="sidebar-brand-text">Basics of technical documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="git.html">The version control platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sphinx.html">The documentation compiler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="markup.html">The markup language</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">The hosting service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="orgmode.html">Org-mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="temi.html">Themes</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <section id="the-hosting-service">
+<span id="host"></span><h1>The hosting service<a class="headerlink" href="#the-hosting-service" title="Link to this heading">#</a></h1>
+<section id="what-is-a-hosting-service">
+<h2>What is a hosting service<a class="headerlink" href="#what-is-a-hosting-service" title="Link to this heading">#</a></h2>
+<p>If you followed the steps described in the <a class="reference internal" href="sphinx.html#sphinx"><span class="std std-ref">previous pages</span></a> of this tutorial, you should have been able to generate <strong>HTML pages</strong> starting from reST documents, using Sphinx.</p>
+<p>Those HTML pages though are stored <strong>locally</strong> in your computer memory; you may want them to be publicly available <strong>on the web</strong>. That’s when hosting services come into play.</p>
+<p>A <strong>hosting service</strong> is what allows you to host your documentation on a server and let it be accessible publicly.</p>
+<p>In this tutorial you will learn how to deploy your documentation in three different platforms: <a class="reference internal" href="#github"><span class="std std-ref">GitHub</span></a>, <a class="reference internal" href="#gitlab"><span class="std std-ref">GitLab</span></a> and <a class="reference internal" href="#readthedocs"><span class="std std-ref">Read the Docs</span></a>.</p>
+</section>
+<section id="exercise-1-host-your-pages-on-github">
+<span id="github"></span><h2>Exercise 1: Host your pages on GitHub<a class="headerlink" href="#exercise-1-host-your-pages-on-github" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Step 1</strong>: create a <code class="docutils literal notranslate"><span class="pre">documentation.yml</span></code> file.</p></li>
+</ul>
+<p>Add the path <code class="docutils literal notranslate"><span class="pre">.github/workflows</span></code> to your project and create a file named <code class="docutils literal notranslate"><span class="pre">documentation.yml</span></code> inside, with the following content:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">documentation</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="nt">on</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">push</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">pull_request</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">workflow_dispatch</span><span class="p p-Indicator">]</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="nt">permissions</span><span class="p">:</span>
+<span class="linenos"> 6</span><span class="w">  </span><span class="nt">contents</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">write</span>
+<span class="linenos"> 7</span>
+<span class="linenos"> 8</span><span class="nt">jobs</span><span class="p">:</span>
+<span class="linenos"> 9</span><span class="w">  </span><span class="nt">docs</span><span class="p">:</span>
+<span class="linenos">10</span><span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+<span class="linenos">11</span><span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="linenos">12</span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v3</span>
+<span class="linenos">13</span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/setup-python@v3</span>
+<span class="linenos">14</span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Install dependencies</span>
+<span class="linenos">15</span><span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="linenos">16</span><span class="w">          </span><span class="no">pip install sphinx sphinx_rtd_theme myst_parser</span>
+<span class="linenos">17</span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Sphinx build</span>
+<span class="linenos">18</span><span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="linenos">19</span><span class="w">          </span><span class="no">sphinx-build source build</span>
+<span class="linenos">20</span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deploy to GitHub Pages</span>
+<span class="linenos">21</span><span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">peaceiris/actions-gh-pages@v3</span>
+<span class="linenos">22</span><span class="w">        </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ github.event_name == &#39;push&#39; &amp;&amp; github.ref == &#39;refs/heads/main&#39; }}</span>
+<span class="linenos">23</span><span class="w">        </span><span class="nt">with</span><span class="p">:</span>
+<span class="linenos">24</span><span class="w">          </span><span class="nt">publish_branch</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gh-pages</span>
+<span class="linenos">25</span><span class="w">          </span><span class="nt">github_token</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ secrets.GITHUB_TOKEN }}</span>
+<span class="linenos">26</span><span class="w">          </span><span class="nt">publish_dir</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build/</span>
+<span class="linenos">27</span><span class="w">          </span><span class="nt">force_orphan</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</pre></div>
+</div>
+<p>The important line is the one that contains the <code class="docutils literal notranslate"><span class="pre">sphinx-build</span></code> instruction. The syntax of this instruction is</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sphinx-build<span class="w"> </span>&lt;sourcedir&gt;<span class="w"> </span>&lt;outputdir&gt;
+</pre></div>
+</div>
+<p>and in our example the source directory is called <code class="docutils literal notranslate"><span class="pre">source</span></code> while the output directory is called <code class="docutils literal notranslate"><span class="pre">build</span></code>. The names of the source and output directory may be different, so make sure that the file contains the correct references to these directories.</p>
+<ul class="simple">
+<li><p><strong>Step 2</strong>: configure GitHub Pages.</p></li>
+</ul>
+<p>Once you add this file to your project repository and push it on GitHub, a <strong>new branch</strong> called <code class="docutils literal notranslate"><span class="pre">gh-pages</span></code> will be created.</p>
+<p>On GitHub, you then have to go to <strong>Settings &gt; Pages</strong>, select <strong>“deploy from a branch”</strong> under the section <strong>“Build and deployment”</strong>, select the branch <code class="docutils literal notranslate"><span class="pre">gh-pages</span></code> and save changes.</p>
+<figure class="align-default" id="id1">
+<img alt="_images/settings.png" src="_images/settings.png" />
+<figcaption>
+<p><span class="caption-text">Go to “Settings” on the upper toolbar</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id2">
+<a class="reference internal image-reference" href="_images/pages.png"><img alt="_images/pages.png" src="_images/pages.png" style="width: 312.0px; height: 296.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">Go to “Pages” on the left sidebar</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id3">
+<img alt="_images/deploy-branch.png" src="_images/deploy-branch.png" />
+<figcaption>
+<p><span class="caption-text">Select “deploy from a branch” and “gh-pages”</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The <strong>deployment</strong> of the documentation will start automatically and you can acces your website by navigating to <strong>Actions &gt; Deployments</strong>.</p>
+<ul class="simple">
+<li><p><strong>Step 3</strong>: push changes to your GitHub repository.</p></li>
+</ul>
+<p>GitHub Pages will deploy your documentation <strong>every time you push</strong> changes on your repository.</p>
+</section>
+<section id="exercise-2-host-your-pages-on-gitlab">
+<span id="gitlab"></span><h2>Exercise 2: Host your pages on GitLab<a class="headerlink" href="#exercise-2-host-your-pages-on-gitlab" title="Link to this heading">#</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We will suppose that you have a repository with the same content as your GitHub repository in GitLab.</p>
+</div>
+<ul class="simple">
+<li><p><strong>Step 1</strong>: create a <code class="docutils literal notranslate"><span class="pre">.gitlab-ci.yml</span></code> file.</p></li>
+</ul>
+<p>Create a <code class="docutils literal notranslate"><span class="pre">.gitlab-ci.yml</span></code> file with the following content:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python:3.7-alpine</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="nt">test</span><span class="p">:</span>
+<span class="linenos"> 4</span><span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test</span>
+<span class="linenos"> 5</span><span class="w">  </span><span class="nt">script</span><span class="p">:</span>
+<span class="linenos"> 6</span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install -U sphinx</span>
+<span class="linenos"> 7</span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sphinx-build -b html source public</span>
+<span class="linenos"> 8</span><span class="w">  </span><span class="nt">rules</span><span class="p">:</span>
+<span class="linenos"> 9</span><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$CI_COMMIT_REF_NAME != $CI_DEFAULT_BRANCH</span>
+<span class="linenos">10</span>
+<span class="linenos">11</span><span class="nt">pages</span><span class="p">:</span>
+<span class="linenos">12</span><span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">deploy</span>
+<span class="linenos">13</span><span class="w">  </span><span class="nt">script</span><span class="p">:</span>
+<span class="linenos">14</span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install -U sphinx</span>
+<span class="linenos">15</span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sphinx-build -b html source public</span>
+<span class="linenos">16</span><span class="w">  </span><span class="nt">artifacts</span><span class="p">:</span>
+<span class="linenos">17</span><span class="w">    </span><span class="nt">paths</span><span class="p">:</span>
+<span class="linenos">18</span><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">public</span>
+<span class="linenos">19</span><span class="w">  </span><span class="nt">rules</span><span class="p">:</span>
+<span class="linenos">20</span><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH</span>
+</pre></div>
+</div>
+<p>As in the GitHub example above, the important line is the one that contains the <code class="docutils literal notranslate"><span class="pre">sphinx-build</span></code> instruction. Make sure that the directory where you keep all your plain-text files is called <code class="docutils literal notranslate"><span class="pre">source</span></code> or change the path accordingly. Notice that now the output directory is called <code class="docutils literal notranslate"><span class="pre">public</span></code> instead of <code class="docutils literal notranslate"><span class="pre">build</span></code>, but that doesn’t matter: this directory <strong>will not</strong> be part of your repository anyway; it’s a directory created and used internally by GitLab to deploy the website and you don’t need to have access to it.</p>
+<p>The deployment of the website will start automatically once you add and push this file to your repository.</p>
+<ul class="simple">
+<li><p><strong>Step 2</strong> Visit your website.</p></li>
+</ul>
+<p>You can visit your website navigating to <strong>Deploy &gt; Pages</strong> from the left sidebar.</p>
+<a class="reference internal image-reference" href="_images/gitlab-pages.png"><img alt="_images/gitlab-pages.png" src="_images/gitlab-pages.png" style="width: 250.0px; height: 175.0px;" /></a>
+</section>
+<section id="exercise-3-host-your-pages-on-read-the-docs">
+<span id="readthedocs"></span><h2>Exercise 3: Host your pages on Read the Docs<a class="headerlink" href="#exercise-3-host-your-pages-on-read-the-docs" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Step 1</strong>: sign up on Read the Docs with GitHub.</p></li>
+</ul>
+<p>Sign up on <a class="reference external" href="https://readthedocs.com">Read the Docs</a>  with your <strong>GitHub</strong> account. Read the docs will now have acces to your repositories on GitHub.</p>
+<ul class="simple">
+<li><p><strong>Step 2</strong>: add a configuration file.</p></li>
+</ul>
+<p>Add a <code class="docutils literal notranslate"><span class="pre">.readthedocs.yaml</span></code> file in your project’s repository with the following content:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1"># .readthedocs.yaml</span>
+<span class="linenos"> 2</span><span class="c1"># Read the Docs configuration file</span>
+<span class="linenos"> 3</span><span class="c1"># See https://docs.readthedocs.io/en/stable/config-file/v2.html for details</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="c1"># Required</span>
+<span class="linenos"> 6</span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="linenos"> 7</span>
+<span class="linenos"> 8</span><span class="c1"># Set the OS, Python version and other tools you might need</span>
+<span class="linenos"> 9</span><span class="nt">build</span><span class="p">:</span>
+<span class="linenos">10</span><span class="w">  </span><span class="nt">os</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-22.04</span>
+<span class="linenos">11</span><span class="w">  </span><span class="nt">tools</span><span class="p">:</span>
+<span class="linenos">12</span><span class="w">    </span><span class="nt">python</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3.12&quot;</span>
+<span class="linenos">13</span><span class="w">    </span><span class="c1"># You can also specify other tool versions:</span>
+<span class="linenos">14</span><span class="w">    </span><span class="c1"># nodejs: &quot;19&quot;</span>
+<span class="linenos">15</span><span class="w">    </span><span class="c1"># rust: &quot;1.64&quot;</span>
+<span class="linenos">16</span><span class="w">    </span><span class="c1"># golang: &quot;1.19&quot;</span>
+<span class="linenos">17</span>
+<span class="linenos">18</span><span class="c1"># Build documentation in the &quot;docs/&quot; directory with Sphinx</span>
+<span class="linenos">19</span><span class="nt">sphinx</span><span class="p">:</span>
+<span class="linenos">20</span><span class="w">  </span><span class="nt">configuration</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">source/conf.py</span>
+<span class="linenos">21</span>
+<span class="linenos">22</span><span class="c1"># Optionally build your docs in additional formats such as PDF and ePub</span>
+<span class="linenos">23</span><span class="c1"># formats:</span>
+<span class="linenos">24</span><span class="c1">#    - pdf</span>
+<span class="linenos">25</span><span class="c1">#    - epub</span>
+<span class="linenos">26</span>
+<span class="linenos">27</span><span class="c1"># Optional but recommended, declare the Python requirements required</span>
+<span class="linenos">28</span><span class="c1"># to build your documentation</span>
+<span class="linenos">29</span><span class="c1"># See https://docs.readthedocs.io/en/stable/guides/reproducible-builds.html</span>
+<span class="linenos">30</span><span class="c1"># python:</span>
+<span class="linenos">31</span><span class="c1">#    install:</span>
+<span class="linenos">32</span><span class="c1">#    - requirements: docs/requirements.txt</span>
+</pre></div>
+</div>
+<p>Notice that Read the Docs wants to know the path to the <code class="docutils literal notranslate"><span class="pre">conf.py</span></code> document: make sure the path to this file is correct.</p>
+<ul class="simple">
+<li><p><strong>Step 3</strong>: push changes to your GitHub repository.</p></li>
+</ul>
+<p><strong>Read the Docs</strong> will deploy your documentation <strong>every time you push</strong> changes on your GitHub repository.</p>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="orgmode.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Org-mode</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="markup.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">The markup language</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2023, Linda Tamaro
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">The hosting service</a><ul>
+<li><a class="reference internal" href="#what-is-a-hosting-service">What is a hosting service</a></li>
+<li><a class="reference internal" href="#exercise-1-host-your-pages-on-github">Exercise 1: Host your pages on GitHub</a></li>
+<li><a class="reference internal" href="#exercise-2-host-your-pages-on-gitlab">Exercise 2: Host your pages on GitLab</a></li>
+<li><a class="reference internal" href="#exercise-3-host-your-pages-on-read-the-docs">Exercise 3: Host your pages on Read the Docs</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/scripts/furo.js?v=32e29ea5"></script>
+    </body>
+</html>
