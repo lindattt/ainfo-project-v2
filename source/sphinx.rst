@@ -63,7 +63,7 @@ Files:
 *	**conf.py**: configuration file for Sphinx. It contains metadata and information regarding extensions, themes, etc.
 
 
-We will now take a closer look on those two files
+We will now take a closer look on those two files.
 
 
 The document ``index.rst``
@@ -130,6 +130,38 @@ The document ``conf.py``
 The document ``conf.py`` contains Python instructions for the Sphinx builder. 
 
 The information contained in this document covers project information, metadata, sphinx extensions, themes and so on.
+
+If you use the ``sphinx-quickstart`` utility, your ``conf.py`` file will look like that:
+
+.. code-block:: python
+
+	# Configuration file for the Sphinx documentation builder.
+	#
+	# For the full list of built-in configuration values, see the documentation:
+	# https://www.sphinx-doc.org/en/master/usage/configuration.html
+
+	# -- Project information -----------------------------------------------------
+	# https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
+
+	project = 'myproject'
+	copyright = '2023, myname'
+	author = 'myname'
+
+	# -- General configuration ---------------------------------------------------
+	# https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
+
+	extensions = []
+
+	templates_path = ['_templates']
+	exclude_patterns = []
+
+	# -- Options for HTML output -------------------------------------------------
+	# https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
+
+	html_theme = 'alabaster'
+	html_static_path = ['_static']
+	
+Let's take a look on a slightly more elaborated ``conf.py`` document, in order to examine a variety of variables that you can add to manage and customize your documentation.
 
 .. code-block:: python
 
@@ -245,7 +277,7 @@ The information contained in this document covers project information, metadata,
 	
 Information about the variables contained in this document can be found in `this page <https://www.sphinx-doc.org/en/master/usage/configuration.html>`__.
 
-Let's take a closer look on some specific part of conf.py. 
+Let's take a closer look on some specific part of ``conf.py``. 
 
 
 
