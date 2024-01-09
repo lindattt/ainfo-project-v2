@@ -397,6 +397,7 @@ This variable consists of paths that contain custom static files, i.e. CSS files
 	  font-family: serif;
 	}
 	
+	
 ``html_theme``
 ~~~~~~~~~~~~~~~~~~~
 This variable allows to change the theme of the HTML output. 
@@ -411,7 +412,7 @@ This variable allows to change the theme of the HTML output.
 	
 	html_theme = 'furo'
 
- After the build, your HTML pages will be rendered with the new theme.
+After the build, your HTML pages will be rendered with the new theme.
 
 	
 	

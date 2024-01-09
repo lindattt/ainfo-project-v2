@@ -104,7 +104,7 @@ Code blocks
 
 **How it looks:**
 
-   .. code-block::
+   .. code-block:: bash
    
       echo "Hello world"
 
@@ -117,14 +117,17 @@ Code blocks
       echo "Hello world"
 
 
-Inline
-~~~~~~
+Inline code
+~~~~~~~~~~~
+**How it looks:**
 
-To emphasize a certain word like ``this``:
+	Run ``git init`` to initialize a repository.
+
+**Source:**
 
 .. code-block:: rest
 
-   ``this``
+   Run ``git init`` to initialize a repository.
 
 
 
