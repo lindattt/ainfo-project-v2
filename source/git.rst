@@ -22,7 +22,7 @@ Exercise: create a repository for your technical documentation project
 ----------------------------------------------------------------------
 
 .. note:: 
-   You need to have `Git <https://git-scm.com/downloads>`__, `Python <https://www.python.org/downloads/>`__ and `pyenv <https://github.com/pyenv/pyenv>`__ installed in your operating system.
+   You need to have `Git <https://git-scm.com/downloads>`__ installed in your operating system.
    
 For the sake of brevity, in the following examples we will work with GitHub, but the same commands and instructions apply to GitLab.
 

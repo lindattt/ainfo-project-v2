@@ -24,7 +24,8 @@ Exercise 1: Host your pages on GitHub
 
 Add the path ``.github/workflows`` to your project and create a file named ``documentation.yml`` inside, with the following content:
 
-.. code-block:: 
+.. code-block:: yaml
+	:linenos:
 
 	name: documentation
 
@@ -71,7 +72,6 @@ Once you add this file to your project repository and push it on GitHub, a **new
 On GitHub, you then have to go to **Settings > Pages**, select **"deploy from a branch"** under the section **"Build and deployment"**, select the branch ``gh-pages`` and save changes.
 
 .. figure:: ./settings.png
-   :scale: 120
    
    Go to "Settings" on the upper toolbar
 
@@ -108,7 +108,8 @@ Exercise 2: Host your pages on GitLab
 
 Create a ``.gitlab-ci.yml`` file with the following content:
 
-.. code-block::
+.. code-block:: yaml
+	:linenos:
 
 	image: python:3.7-alpine
 
@@ -140,7 +141,7 @@ The deployment of the website will start automatically once you add and push thi
 You can visit your website navigating to **Deploy > Pages** from the left sidebar.
 
 .. image:: ./gitlab-pages.png
-	
+   :scale: 50
 
 .. Se modifichi il path del progetto con username.gitlab.io, (attenzione: modificare config della cartella locale) allora puoi visitare il sito su https://username.gitlab,io
 
@@ -158,7 +159,8 @@ Sign up on `Read the Docs <https://readthedocs.com>`_  with your **GitHub** acco
 
 Add a ``.readthedocs.yaml`` file in your project's repository with the following content:
 
-.. code-block:: 
+.. code-block:: yaml
+	:linenos:
 
 	# .readthedocs.yaml
 	# Read the Docs configuration file

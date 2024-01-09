@@ -23,11 +23,20 @@ Exercise: build your first page of documentation
 
 In this section we will learn how to build documentation using Sphinx.
 
+.. note:: 
+   You need to have `Python <https://www.python.org/downloads/>`__ and `pip <https://pypi.org/project/pip/>`__ installed in your operating system.
+
 *	**Step 1**: Activate the virtual environment.
 
 The virtual environment included in the repository you've copied will provide you the latest version of Sphinx.
 
-To set up the virtual environment and get Sphinx installed, run the commands in the ``README.md`` file ( **INSERIRE LINK** ).
+To set up the virtual environment and get Sphinx installed, run the commands in the `README.md <https://github.com/lindattt/template-sphinx/blob/main/README.md>`__ file:
+
+.. code:: bash
+
+	python -m venv env
+	. env/bin/activate
+	pip install -r requirements.txt
 
 
 *	**Step 2**: Use sphinx-quickstart.
@@ -392,19 +401,17 @@ This variable consists of paths that contain custom static files, i.e. CSS files
 ~~~~~~~~~~~~~~~~~~~
 This variable allows to change the theme of the HTML output. 
 
-Alabaster is default.
+.. code-block:: python
+	
+	html_theme = 'alabaster'
 
-Example
-
+*Alabaster* is the default theme, but there are many others. For example, you can download *Furo* (see :ref:`here <temi>` how to do it) and change the content of the ``html_theme`` variable:
 
 .. code-block:: python
 	
 	html_theme = 'furo'
 
-To change it, just download the package, put it in ????, then change the name in ``conf.py``
- 
-.. code-block:: python
-	
-	html_theme = 'alabaster'
+ After the build, your HTML pages will be rendered with the new theme.
+
 	
 	
