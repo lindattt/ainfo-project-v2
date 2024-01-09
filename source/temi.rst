@@ -4,27 +4,32 @@
 Themes
 =======
 
-Sphinx supports changing the appearance of its HTML output via themes. A theme is a collection of HTML templates, stylesheet(s) and other static files. Additionally, it has a configuration file which specifies from which theme to inherit, which highlighting style to use, and what options exist for customizing the theme’s look and feel.
+Sphinx supports changing the appearance of its HTML output via **themes**. A theme is a collection of HTML templates, stylesheets and other static files.
 
-Themes are meant to be project-unaware, so they can be used for different projects without change.
-
-There are plenty of free themes that you can choose. Here you can find some examples: https://sphinx-themes.org
+The default theme for a Sphinx project is *Alabaster*, but there are plenty of free themes that you can choose. Here you can find some: https://sphinx-themes.org.
 
 
-HANDS ON: Change your theme
----------------------------------------
+Exercise: Change the theme of your Sphinx project
+-------------------------------------------------
 
-How to change the theme of your project?
-It is simple. You need to install the theme 
+Suppose that you've browsed `Sphinx themes <https://sphinx-themes.org>`__ and you've chosen `Read the docs <https://sphinx-themes.org/sample-sites/sphinx-rtd-theme/>`__ theme for your project. These few steps will show you how to install and use it.
 
-.. code-block:: shell
+*   **Step 1**: install the theme.
 
-	pip install
-
-
-
-and then change the document ``conf.py``
+In your shell, run:
 
 .. code-block:: shell
 
-	theme
+	pip install sphinx-rtd-theme
+
+*   **Step 2**: edit ``conf.py`` file.
+
+Open ``conf.py``, look for the ``html_theme`` variable end edit as follows:
+
+.. code-block:: python
+
+	html_theme = 'sphinx_rtd_theme'
+
+*   **Step 3**: build.
+
+Build your documentation and enjoy your new theme.

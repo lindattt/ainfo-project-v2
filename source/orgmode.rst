@@ -1,10 +1,10 @@
 .. _orgmode:
 
-==============
+=========
 Org-mode
-==============
+=========
 
-What is org-mode
+What is Org-mode
 -----------------
 
 Piccola storia, Cosa fa, linguaggio di markup, feature dell'editor, possibilità di esportare e quindi tradurre in reST, 
