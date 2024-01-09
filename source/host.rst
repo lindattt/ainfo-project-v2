@@ -4,8 +4,6 @@
 The hosting service
 ====================
 
-SCUSA, MA C'E' TRACCIA DI QUESTA MODIFICA?
-
 What is a hosting service
 -------------------------
 
@@ -73,6 +71,7 @@ Once you add this file to your project repository and push it on GitHub, a **new
 On GitHub, you then have to go to **Settings > Pages**, select **"deploy from a branch"** under the section **"Build and deployment"**, select the branch ``gh-pages`` and save changes.
 
 .. figure:: ./settings.png
+   :scale: 120
    
    Go to "Settings" on the upper toolbar
 
@@ -101,9 +100,13 @@ GitHub Pages will deploy your documentation **every time you push** changes on y
 Exercise 2: Host your pages on GitLab
 ---------------------------------------
 
-Crea repository su gitlab
+.. note:: 
 
-Crea un file ``.gitlab-ci.yml`` con il seguente contenuto:
+	We will suppose that you have a repository with the same content as your GitHub repository in GitLab.
+
+*   **Step 1**: create a ``.gitlab-ci.yml`` file.
+
+Create a ``.gitlab-ci.yml`` file with the following content:
 
 .. code-block::
 
@@ -113,7 +116,7 @@ Crea un file ``.gitlab-ci.yml`` con il seguente contenuto:
 	  stage: test
 	  script:
 	  - pip install -U sphinx
-	  - sphinx-build -b html . public
+	  - sphinx-build -b html source public
 	  rules:
 	    - if: $CI_COMMIT_REF_NAME != $CI_DEFAULT_BRANCH
     
@@ -121,20 +124,25 @@ Crea un file ``.gitlab-ci.yml`` con il seguente contenuto:
 	  stage: deploy
 	  script:
 	  - pip install -U sphinx
-	  - sphinx-build -b html . public
+	  - sphinx-build -b html source public
 	  artifacts:
 	    paths:
 	    - public
 	  rules:
 	    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
 
-Attenzione alla riga - sphinx-build -b html . public, modificarla ad hoc
+As in the GitHub example above, the important line is the one that contains the ``sphinx-build`` instruction. Make sure that the directory where you keep all your plain-text files is called ``source`` or change the path accordingly. Notice that now the output directory is called ``public`` instead of ``build``, but that doesn't matter: this directory **will not** be part of your repository anyway; it's a directory created and used internally by GitLab to deploy the website and you don't need to have access to it.
 
-Il deploy della pagina parte
+The deployment of the website will start automatically once you add and push this file to your repository.
 
-Visitare il proprio sito su Pages
+*   **Step 2** Visit your website.
 
-Se modifichi il path del progetto con username.gitlab.io, (attenzione: modificare config della cartella locale) allora puoi visitare il sito su https://username.gitlab,io
+You can visit your website navigating to **Deploy > Pages** from the left sidebar.
+
+.. image:: ./gitlab-pages.png
+	
+
+.. Se modifichi il path del progetto con username.gitlab.io, (attenzione: modificare config della cartella locale) allora puoi visitare il sito su https://username.gitlab,io
 
 
 .. _readthedocs:
