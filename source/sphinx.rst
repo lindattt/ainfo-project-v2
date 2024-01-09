@@ -7,7 +7,7 @@ The documentation compiler
 What is a documentation compiler
 --------------------------------
 
-A **documentation compiler** is a compiler that converts plain text files (written in Markdown, reStructured Text or other markup languages) into interactive documentation, for example in the form of HTML, LaTeX, ePub and other formats.
+A **documentation compiler** is a compiler that converts plain text files, written for example reStructured Text or other markup languages, into interactive documentation, for example in the form of HTML, LaTeX, ePub and other formats.
 
 
 Sphinx
@@ -23,14 +23,14 @@ Exercise: build your first page of documentation
 
 In this section we will learn how to build documentation using Sphinx.
 
-*	**Step 1**: Activate the virtual environment
+*	**Step 1**: Activate the virtual environment.
 
 The virtual environment included in the repository you've copied will provide you the latest version of Sphinx.
 
 To set up the virtual environment and get Sphinx installed, run the commands in the ``README.md`` file ( **INSERIRE LINK** ).
 
 
-*	**Step 2**: Use sphinx-quickstart
+*	**Step 2**: Use sphinx-quickstart.
 
 We can easily generate the basic documentation template with a built-in command in Sphinx. Run:
 
